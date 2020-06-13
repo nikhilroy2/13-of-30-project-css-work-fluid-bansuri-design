@@ -1,0 +1,137 @@
+*{
+    box-sizing: border-box;
+}
+:root{
+    --fluid-body: #EBA85C;
+    --fluid-wrap: #171C31;
+    --fluid-drop: #4A1D09;
+    --feather-primary: #395638;
+    --feather-secondary: #3E6039;
+    --feather-dark: #1F3547;
+    --feather-red: #BE2438;
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+.fluid_wrapper{
+    width: 450px;
+    position: relative;
+    .fluid_pipe{
+        width: 100%;
+        height: 30px;
+        background: var(--fluid-body);
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        position: relative;
+        transform: rotate(.4turn);
+        animation: fluid_pipe 3s forwards ;
+        @keyframes fluid_pipe {
+            0%{
+                transform: rotate(5turn);
+            }
+            100%{
+                transform: rotate(.4turn);
+            }
+        }
+        &::before,&::after{
+            content: '';
+            position: absolute;
+            height: 100%;
+            background: var(--fluid-drop);
+            border-radius: 50%;
+        }
+        &::before{
+            left: -2px;
+            width: 4px;
+        }
+        &::after{
+            right: -1px;
+            width: 2.5px;
+        }
+        .fluid_drop{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 3px;
+            transition: .1s;
+            cursor: pointer;
+            background: var(--fluid-drop);
+            &:nth-of-type(2){
+                margin-left: auto;
+            }
+            &:not(:first-child){
+                margin-right: 12px;
+            }
+        }
+        .fluid_foo{
+            margin-left: 12%;
+        }
+        .fluid_design{
+            position: absolute;
+            left: 5%;
+            top: 0;
+            height: 100%;
+            width: 40%;
+            display: flex;
+            pointer-events: none;
+            justify-content: space-between;
+            .design_col{
+                span{
+                    display: inline-block;
+                    width: 8px;
+                    background: var(--fluid-wrap);
+                    height: 100%;
+                    margin: 0 0px;
+                    position: relative;
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        left: -2px;
+                        width: 4px;
+                        height: 100%;
+                        background: var(--fluid-body);
+                        border-radius: 100%;
+                    }
+                }
+            }
+        }
+    }
+    // .hare_krishna_feather{
+    //     position: absolute;
+    //     left: 0;
+    //     width: 80%;
+    //     height: 10px;
+    //     background: linear-gradient(88deg, var(--feather-primary) , rgba(29, 41, 38, 0.849) 0%, var(--feather-secondary));
+    // }
+}
+#hare_krishna{
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: hare_krishna 1s linear ;
+    font-size: 10rem;
+    color: white;
+    pointer-events: none;
+    user-select: none;
+    margin: 1rem;
+    text-shadow: 0 0 1px #000;
+    @keyframes hare_krishna {
+        0%{
+            transform: translateY(0);
+        }
+        100%{
+            transform: translateY(-50px);
+        }
+        
+    }
+}
+#videoKrishna{
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}

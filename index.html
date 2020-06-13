@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="fluid_wrapper">
+        <div class="fluid_pipe">
+            <div class="fluid_drop fluid_foo"></div>
+
+            <div class="fluid_drop fluid_drop_animate"></div>
+            <div class="fluid_drop fluid_drop_animate"></div>
+            <div class="fluid_drop fluid_drop_animate"></div>
+            <div class="fluid_drop fluid_drop_animate"></div>
+            <div class="fluid_drop fluid_drop_animate"></div>
+            <div class="fluid_drop fluid_drop_animate"></div>
+            <div class="fluid_design">
+                <div class="design_col">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="design_col">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="hare_krishna_feather">
+            <div class="feather_line">
+
+            </div>
+        </div> -->
+    </div>
+    <video id="videoKrishna" src="./video/hare_krishna.mp4"></video>
+    <script>
+        window.onmousemove = (e) => {
+            let hare_krishna = document.createElement('span');
+            hare_krishna.id = 'hare_krishna';
+            document.body.appendChild(hare_krishna);
+            let krishna = e.clientX;
+            let radha = e.clientY;
+            let krishnaArray = ['H', 'A', 'R', 'E', 'K', 'R', 'I', 'S', 'H', 'N', 'A']
+
+            hare_krishna.textContent = krishnaArray[Math.floor(Math.random() * krishnaArray.length)];
+            hare_krishna.setAttribute('style', `top: ${radha}px; left: ${krishna}px`)
+            setTimeout(() => {
+                hare_krishna.remove()
+            }, 1000)
+
+        }
+        window.addEventListener('mouseover', () => {
+            let videoKrishna = document.getElementById('videoKrishna');
+            videoKrishna.play();
+            videoKrishna.loop = Infinity;
+            let fluid_drop_animate = document.querySelectorAll('.fluid_drop_animate');
+            setInterval(() => {
+                fluid_drop_animate.forEach(v => {
+                    if (videoKrishna.currentTime > 1) {
+                        v.setAttribute('style', `background: #000`);
+
+                        setTimeout(() => {
+                            v.removeAttribute('style')
+                        }, Math.random() * 3000)
+                        console.log('play')
+                    } else {
+                        console.log('not play')
+                    }
+                })
+            }, 500)
+        })
+    </script>
+</body>
+
+</html>
